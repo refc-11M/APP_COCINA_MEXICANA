@@ -1,174 +1,48 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+const botones = document.querySelectorAll('.btn-apartado');
+const itemsContenido = document.querySelectorAll('.contenido-item');
+const itemInicial = document.getElementById('item-platillos');
 
-:root {
-    /* Paleta de colores mexicana - variables reutilizables */
-    --color-rojo: #C42021;
-    --color-naranja: #F2992E;
-    --color-crema: #F8F3E6;
-    --color-marrón-oscuro: #5A2E0A;
-    --color-marrón-claro: #8C5F3B;
-    --color-blanco: #FFFFFF;
-    --color-sombra: rgba(0, 0, 0, 0.15);
-    --transicion-rapida: all 0.3s ease;
-    --transicion-lenta: opacity 0.5s ease;
-}
 
-body {
-    background-color: var(--color-crema);
-    color: var(--color-marrón-oscuro);
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
-}
+function mostrarItem(idItem) {
+    // Validar que el item exista
+    const itemSeleccionado = document.getElementById(`item-${idItem}`);
+    if (!itemSeleccionado) return;
 
-h1, h2, h3, button {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+   
+    itemsContenido.forEach(item => item.classList.remove('activo'));
+    botones.forEach(boton => boton.setAttribute('aria-pressed', 'false'));
+
+    
+    itemSeleccionado.classList.add('activo');
+    document.getElementById(`btn-${idItem}`).setAttribute('aria-pressed', 'true');
+    itemSeleccionado.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 
+function inicializarApp() {
+    // Mostrar el primer item al cargar
+    itemInicial.classList.add('activo');
+    document.getElementById('btn-platillos').setAttribute('aria-pressed', 'true');
 
-header {
-    background-color: var(--color-rojo);
-    color: var(--color-blanco);
-    padding: 2.5rem 1rem;
-    text-align: center;
-    box-shadow: 0 2px 8px var(--color-sombra);
-}
+  
+    botones.forEach(boton => {
+        // Evento clic
+        boton.addEventListener('click', () => {
+            const id = boton.id.split('-')[1];
+            mostrarItem(id);
+        });
 
-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-
-
-.botones-seccion {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 1rem;
-}
-
-.botones-container {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.btn-apartado {
-    background-color: var(--color-naranja);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    color: var(--color-blanco);
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: var(--transicion-rapida);
-    box-shadow: 0 3px 6px var(--color-sombra);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.btn-apartado:hover {
-    background-color: #E07B10;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px var(--color-sombra);
-}
-
-.btn-apartado:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px var(--color-sombra);
-}
-
-.btn-apartado[aria-pressed="true"] {
-    background-color: #E07B10;
-    box-shadow: 0 2px 4px var(--color-sombra);
+        // Evento teclado (accesibilidad)
+        boton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const id = boton.id.split('-')[1];
+                mostrarItem(id);
+            }
+        });
+    });
 }
 
 
-
-.contenido-seccion {
-    max-width: 900px;
-    margin: 0 auto 4rem auto;
-    padding: 0 1rem;
-}
-
-.contenido-item {
-    text-align: center;
-    display: none;
-    opacity: 0;
-    transition: var(--transicion-lenta);
-}
-
-.contenido-item.activo {
-    display: block;
-    opacity: 1;
-}
-
-.contenido-item h2 {
-    color: var(--color-rojo);
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-naranja);
-    display: inline-block;
-}
-
-.contenido-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px var(--color-sombra);
-    object-fit: cover;
-    max-height: 600px;
-}
-
-.contenido-item p {
-    margin-top: 1.2rem;
-    font-size: 1.05rem;
-    color: var(--color-marrón-claro);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    .btn-apartado {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-
-    .contenido-item h2 {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .botones-container {
-        gap: 1rem;
-    }
-
-    .btn-apartado {
-        width: 100%;
-        max-width: 300px;
-    }
-}
+document.addEventListener('DOMContentLoaded', inicializarApp);
