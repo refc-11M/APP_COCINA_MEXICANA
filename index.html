@@ -1,74 +1,105 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Cocina Mexicana</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sabor Mexicano - Restaurante de comida tradicional mexicana en Villa Victoria. Menú de platillos, bebidas, postres y datos de contacto.">
+    <meta name="author" content="Sabor Mexicano">
+    <title>COCINA MEXICANA</title>
 </head>
 <body>
-  <div class="app">
-    <header class="header">
-      <h1>Cocina Mexicana</h1>
-      <p></p>
+    
+    <header>
+        <h1>Todo hecho con sabor Mexicano</h1>
+        <p>Platillos tradicionales hechos con ingredientes frescos, ricos y con cariño</p>
     </header>
 
-    <section class="perfil">
-      <h2>Alumno</h2>
-      <p>Citlali Reyes</p>
+    <section class="botones-seccion" aria-label="Navegación por secciones del restaurante">
+        <div class="botones-container">
+            <button class="btn-apartado" id="btn-platillos" aria-pressed="false" aria-controls="item-platillos">
+                Menú de Platillos
+            </button>
+            <button class="btn-apartado" id="btn-bebidas" aria-pressed="false" aria-controls="item-bebidas">
+                Bebidas Típicas
+            </button>
+            <button class="btn-apartado" id="btn-postres" aria-pressed="false" aria-controls="item-postres">
+                Postres Mexicanos
+            </button>
+            <button class="btn-apartado" id="btn-contacto" aria-pressed="false" aria-controls="item-contacto">
+                Contacto y Ubicación
+            </button>
+        </div>
     </section>
 
-    <nav class="menu">
-      <button onclick="mostrarSeccion('inicio')">Inicio</button>
-      <button onclick="mostrarSeccion('menu-comida')">Menú de platillos</button>
-      <button onclick="mostrarSeccion('contacto')">Contacto</button>
-    </nav>
+    
+    <section class="contenido-seccion" aria-label="Contenido del restaurante">
+        <div class="contenido-item" id="item-platillos">
+            <h2>Platillos Destacados</h2>
+            <img 
+                src="https://images.unsplash.com/photo-1567306301408-9b74779a11af?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
+                alt="Tacos al pastor con piña" 
+               loading="lazy"
+              >
+          <img
+              src=""
+              alt="Enchiladas rojas con crema"
+             loading="lazy"
+            >
+          <img
+            src=""
+              alt="Pozole rojo con carne de cerdo"
+                loading="lazy"
+            >
+            <p>¡Disfruta tu platillo!</p>
+        </div>
 
-    <main>
-      <section id="inicio" class="seccion activa">
-        <h2>Bienvenido</h2>
-        <p>En esta App encontraras una gran variedad de platillos mexicanos, que varian desde su sabor, color, textura y estado.</p>
-        <div class="card">
-          <h3>Horario</h3>
-          <p>Lunes a Viernes</p>
-          <p>8:00 am a 2:00 pm</p>
+        <div class="contenido-item" id="item-bebidas">
+            <h2> Bebidas Típicas</h2>
+            <img 
+                src="https://images.unsplash.com/photo-1585088762211-7a45199e5d6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
+                alt="Agua de jamaica roja"  
+                loading="lazy"
+            >
+          <img 
+                src="https://images.unsplash.com/photo-1585088762211-7a45199e5d6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
+                alt="Michelada con limón"
+                loading="lazy"
+            >
+          <img 
+                src="https://images.unsplash.com/photo-1585088762211-7a45199e5d6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
+                alt="Cerveza chica Corona"
+                loading="lazy"
+            >
+            <p>Completa tu comida con nuestras bebidas </p>
         </div>
-      </section>
 
-      <section id="menu-comida" class="seccion">
-        <h2>Menú del día</h2>
-        <div class="card">
-          <h3>Tacosde bistec adobado</h3>
-          <p>$50</p>
-          <p>Incluye salsas verde y roja, verduras y en la compra de tres ordenes, te llevas refresco gratis de 3L./p>
-          
+        <div class="contenido-item" id="item-postres">
+            <h2>Postres </h2>
+            <img 
+                src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
+                alt="Flan de cajeta con caramelo"
+                loading="lazy"
+            >
+          <img 
+                src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
+                alt="Pastel de elote"
+                loading="lazy"
+            >
+          <img 
+                src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
+                alt="Churros con cajeta"
+                loading="lazy"
+            >
+            
         </div>
-        <div class="card">
-          <h3>Hamburguesa</h3>
-          <p>$40</p>
-        </div>
-        <div class="card">
-          <h3>Agua fresca</h3>
-          <p>$15</p>
-        </div>
-      </section>
 
-      <section id="contacto" class="seccion">
-        <h2>Contacto</h2>
-        <div class="card">
-          <p>Encargado: María López</p>
-          <p>Ubicación: Edificio A</p>
-          <p>Teléfono: 722 000 0000</p>
+        <div class="contenido-item" id="item-contacto">
+            <h2>Encuéntranos Aquí</h2>
+      
+            <p>San Jose Villa de Allende, Calle Pancho Barraza, seccion V</p>
         </div>
-      </section>
-    </main>
+    </section>
 
-    <footer class="footer">
-      <span>@</span>
-      <span></span>
-      <span></span>
-    </footer>
-  </div>
-  <script src="js/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
