@@ -1,8 +1,47 @@
 
-function mostrarSeccion(id) {
-  let secciones = document.querySelectorAll(".seccion");
-  secciones.forEach(function(seccion) {
-    seccion.classList.remove("activa");
-  });
-  document.getElementById(id).classList.add("activa");
+const botones = document.querySelectorAll('.btn-apartado');
+const itemsContenido = document.querySelectorAll('.contenido-item');
+const itemInicial = document.getElementById('item-platillos'); 
+
+
+function mostrarItem(idItem) {
+    
+    const itemSeleccionado = document.getElementById(`item-${idItem}`);
+    if (!itemSeleccionado) return;
+
+   
+    itemsContenido.forEach(item => item.classList.remove('activo'));
+    botones.forEach(boton => boton.setAttribute('aria-pressed', 'false'));
+
+    
+    itemSeleccionado.classList.add('activo');
+    document.getElementById(`btn-${idItem}`).setAttribute('aria-pressed', 'true');
+
+    
+    itemSeleccionado.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+
+function inicializarApp() {
+    
+    itemInicial.classList.add('activo');
+    document.getElementById('btn-platillos').setAttribute('aria-pressed', 'true');
+
+    
+    botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const id = boton.id.split('-')[1];
+            mostrarItem(id);
+        });
+
+       
+        boton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const id = boton.id.split('-')[1];
+                mostrarItem(id);
+            }
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', inicializarApp);
