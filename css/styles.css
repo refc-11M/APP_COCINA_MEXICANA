@@ -1,11 +1,11 @@
-/* RESETEO BASICO */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* COLORES Y FUENTES */
+
 body {
     background-color: #F8F3E6;
     color: #5A2E0A;
@@ -82,6 +82,7 @@ header p {
 .contenido-item {
     display: none;
     text-align: center;
+    padding: 1rem 0;
 }
 
 .contenido-item.activo {
@@ -104,10 +105,17 @@ header p {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+
 .contenido-item p {
     margin-top: 1.5rem;
     font-size: 1.1rem;
     color: #8C5F3B;
+    line-height: 1.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+    font-style: italic; 
 }
 
 /* RESPONSIVO */
@@ -125,5 +133,9 @@ header p {
     .contenido-item img {
         max-width: 90%;
         margin: 1rem auto;
+    }
+    .contenido-item p {
+        font-size: 1rem;
+        text-align: justify; 
     }
 }
